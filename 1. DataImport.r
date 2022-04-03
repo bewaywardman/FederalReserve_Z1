@@ -1,5 +1,7 @@
 
 require(openxlsx)
+require(reshape2)
+require(ggplot2)
 
 # download datadump for Z1 release, March 10th 2022
 # this can be easily automated to most recent, especially using a get request and regex, or identifying prior quarter end from Sys.Date(), but hardcoding for now
@@ -117,3 +119,65 @@ for(n in 2:ncol(z1_database)){
 		z1_database[,n] = as.numeric(z1_database[,n])
 	}
 }
+
+
+#q1
+colns = c(1,2,10,18)
+colns = colns+1
+
+colns=c(4446)
+colns=colns+1
+
+plotdata = z1_database[,c(1,colns)]
+plotdata = na.omit(plotdata)
+
+
+plotdata_melt = melt(plotdata,id=,"datefix",variable=colnames(plotdata)[2:ncol(plotdata)])
+
+ggplot(plotdata)+geom_bar(position="dodge",x=)
+
+#FA156006005.Q_f4
+
+#b101  balance sheet households
+#f101  liabilities households
+View(datadict[which(datadict$datatable == "b101"),])
+
+colns = c(1,which(datadict$datatable == "b101")+1)
+
+plotdata = z1_database[,c(1,colns)]
+
+
+library(zoo)
+
+#inflation data https://fred.stlouisfed.org/series/FPCPITOTLZGUSA
+#more inflation data https://www.bls.gov/cpi/tables/seasonal-adjustment/home.htm
+household net worth > inflation
+
+
+# focus on households, large amount of household data
+#
+
+FA156006005
+
+Liability of the households and nonprofit organizations sector (table F.101)
+
+
+#EUR USD full history
+# source
+#https://www.wsj.com/market-data/quotes/fx/EURUSD/historical-prices
+
+#inflation vs 
+
+
+# data study
+
+#why the fed started qe
+#rates rock bottom, need to curb long term yields, asset purchases
+# "prop up asset prices", moreso aiming for long term yields
+# infer effect on long term yields?
+# announced scaling down balance sheet in below vid, how did this go? 
+https://www.youtube.com/watch?v=9F31y5aAxlc
+
+# rates changes vs household statistics
+#context
+https://www.thebalance.com/u-s-inflation-rate-history-by-year-and-forecast-3306093
