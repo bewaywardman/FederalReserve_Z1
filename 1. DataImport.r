@@ -92,7 +92,7 @@ rm(datafiles_temp)
 datadict$colname = paste0(datadict$DataKey,"_",datadict$datatable)
 
 
-#correcting a data error on the SECs part between data dictionary file and datafile, for files b101h and b101n
+#correcting a data error on the FEDs part between data dictionary file and datafile, for files b101h and b101n
 #keys are assigned codes_Q, but are codes_A in the datafiles
 if(!any(datadict$colname[which(datadict$datatable == "b101h")] %in% colnames(z1_database))){ datadict$colname[which(datadict$datatable == "b101h")] = gsub("Q_","A_",datadict$colname[which(datadict$datatable == "b101h")]) }
 if(!any(datadict$colname[which(datadict$datatable == "b101n")] %in% colnames(z1_database))){ datadict$colname[which(datadict$datatable == "b101n")] = gsub("Q_","A_",datadict$colname[which(datadict$datatable == "b101n")]) }
