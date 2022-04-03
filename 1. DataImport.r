@@ -85,7 +85,6 @@ for(n in 1:length(datafiles)){
 rm(rown)
 rm(unmatched_temp)
 rm(datafiles_temp)
-rm(datafiles_temp)
 
 #creating a field in our data dictionary which matches to unique database fields
 datadict$colname = paste0(datadict$DataKey,"_",datadict$datatable)
@@ -112,3 +111,9 @@ z1_database$datefix = paste0(datefix_year,"-",datefix_month,"-",datefix_day)
 #reorder database, fixed date then data, without old date field
 z1_database = z1_database[,c(ncol(z1_database),2:(ncol(z1_database)-1))]
 
+for(n in 2:ncol(z1_database)){
+	if(!all(is.na(z1_database[,n]))){
+		#if(any(z1_database[,n] == "ND")){ z1_database[which(z1_database[,n] == "ND"),n] = NA }
+		z1_database[,n] = as.numeric(z1_database[,n])
+	}
+}
