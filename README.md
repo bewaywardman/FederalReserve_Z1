@@ -1,13 +1,12 @@
 # FederalReserve_Z1
-Absorbs data from federal reserve z1 releases. Aims being to create a centralised data dictionary, and a single database source for all information.
-Ultimately, the format at face value is inhospitable to data science.
+Absorbs data from federal reserve z1 releases. The format at face value is quite inhospitable to data science, so the objective is to create a centralised data dictionary, with a single database source for all information.
 
-Generation of a unique column ID, used to link between central data dictionary and database.
+In addition I have taken the step to define a unique column identifier, used to link between a central data dictionary and database, as there are inconsistencies with the naming of fields being non-unique between unique data within data sources.
 
-Notably, two files required corrections owing to errors by the FED. These are in the form of naming mismatches between
-what is expected in the datafile and what is actually present in datafiles.
+Notably, two files required further correction owing to errors by the FED. These are in the form of naming mismatches between
+what is expected in the datafile through dictionary information and what is actually present in datafiles.
 
-Conversion of annual data into quarterly formatting to allow for merging of datasets, further conversion from base formatting into
+Data is standardised into granular date formatting to allow for merging of datasets, with further conversion from the base formatt into
 internationally recognised formats.
 
 CPI and seasonal correction information is obtained from:
